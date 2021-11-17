@@ -16,10 +16,13 @@ public class Matrix2by2 implements Matrix2by2Interface {
     private int[] tot = {+2,3};
     private String[] var ={"x","y"} ;
     private int det ;
+    private float det1;
+    private int fresult[] ={0,0};
     
     //Constructor
 
     public Matrix2by2() {
+    
         
         
     }
@@ -68,6 +71,15 @@ public class Matrix2by2 implements Matrix2by2Interface {
     public void setDet(int det) {
         this.det = det;
     }
+
+    public int[] getFresult() {
+        return fresult;
+    }
+
+    public void setFresult(int[] fresult) {
+        this.fresult = fresult;
+    }
+    
     
     
     //Methods
@@ -206,13 +218,26 @@ public class Matrix2by2 implements Matrix2by2Interface {
         System.out.println("");
         System.out.print("X = ");
         System.out.print(" | "+this.getCoefS()[3]+" "+this.getCoefS()[1]+" |");
-        System.out.println("   | "+this.getTot()[0]+" |");
+        System.out.print("   | "+this.getTot()[0]+" |");
+        System.out.print("   | "+this.getCoefS()[3]+"*"+this.getTot()[0]+"+("+this.getCoefS()[1]+"*"+this.getTot()[1]+")|");
+        System.out.println("  | "+(this.getCoef()[3]*this.getTot()[0]+Integer.parseInt(this.getCoefS()[1])*this.getTot()[1])+" |" );
         System.out.print("     ");
         System.out.print("| "+this.getCoefS()[2]+" "+this.getCoefS()[0]+" |");
         System.out.print(" . ");
         System.out.print("| "+this.getTot()[1]+" |");
-        
-        System.out.println("");
+        System.out.print(" = ");
+        System.out.print("| "+this.getCoefS()[2]+"*"+this.getTot()[0]+"+("+this.getCoefS()[0]+"*"+this.getTot()[1]+")|");
+        System.out.print(" =");
+        System.out.println("| "+(Integer.parseInt(this.getCoefS()[2])*this.getTot()[0]+Integer.parseInt(this.getCoefS()[0])*this.getTot()[1])+"  |" );
+        System.out.println("------------------------------------------------------------------");
+        System.out.print("X = | "+(this.getCoef()[3]*this.getTot()[0]+Integer.parseInt(this.getCoefS()[1])*this.getTot()[1])+" |" );
+        System.out.print("   1 /"+this.getDet());
+        this.det1 = 1.00f/this.getDet();
+        System.out.println("   |"+(this.det1*(this.getCoef()[3]*this.getTot()[0]+Integer.parseInt(this.getCoefS()[1])*this.getTot()[1]))+" |");
+        System.out.print("    | "+(Integer.parseInt(this.getCoefS()[2])*this.getTot()[0]+Integer.parseInt(this.getCoefS()[0])*this.getTot()[1])+"  |" );
+        System.out.print(" . ");
+        System.out.print("      = "); 
+        System.out.println("|"+(this.det1*(Integer.parseInt(this.getCoefS()[2])*this.getTot()[0]+Integer.parseInt(this.getCoefS()[0])*this.getTot()[1]))+" |");
     }
 
     
