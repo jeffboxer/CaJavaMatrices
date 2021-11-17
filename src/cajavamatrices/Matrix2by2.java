@@ -106,9 +106,7 @@ public class Matrix2by2 implements Matrix2by2Interface {
     @Override
     public void find2x2Determinant() {
         
-        System.out.println("Matrix A  ");
-        System.out.println("| "+this.getCoef()[0]+" "+this.getCoef()[1]+" |");
-        System.out.println("| "+this.getCoef()[1]+" "+this.getCoef()[2]+" |");
+
         System.out.println("================================================");
         System.out.println("Determinant Formula");
         System.out.println("a.d - c.b");
@@ -116,29 +114,44 @@ public class Matrix2by2 implements Matrix2by2Interface {
         System.out.println("Determinant A");
         System.out.println(this.getCoef()[0]+" * "+this.getCoef()[3] + " -( "+this.getCoef()[1]+" * "+this.getCoef()[2]+")");
         System.out.println(this.getCoef()[0]*this.getCoef()[3]+"- ("+this.getCoef()[1]*this.getCoef()[2]+")");
+        System.out.print("det|A|= ");
         System.out.println(this.getCoef()[0]*this.getCoef()[3]+(this.getCoef()[1]*this.getCoef()[2])*-1);
         this.setDet(this.getCoef()[0]*this.getCoef()[3]+(this.getCoef()[1]*this.getCoef()[2])*-1);
+        System.out.println("=================================================");
        
     }
 
     @Override
     public void findA() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Matrix A  ");
+        System.out.println("| "+this.getCoef()[0]+" "+this.getCoef()[1]+" |");
+        System.out.println("| "+this.getCoef()[2]+" "+this.getCoef()[3]+" |");
+        
     }
 
     @Override
     public void findInverseA() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Inverse A");
+        System.out.println("|  d -b |");
+        System.out.println("| -c  a |");
+        System.out.println("=================================================");
+        System.out.println("Inverse A");
+        System.out.println("|  "+this.getCoef()[3]+" "+this.getCoef()[1]*-1+"  |");
+        System.out.println("| "+this.getCoef()[2]*-1+" "+this.getCoef()[0]*-1+" |");
     }
 
     @Override
     public void findX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Matrix X  ");
+        System.out.println("| "+this.getVar()[0]+" |");
+        System.out.println("| "+this.getVar()[1]+" |");
     }
 
     @Override
     public void findB() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Matrix B  ");
+        System.out.println("| "+this.getTot()[0]+" |");
+        System.out.println("| "+this.getTot()[1]+" |");
     }
 
     @Override

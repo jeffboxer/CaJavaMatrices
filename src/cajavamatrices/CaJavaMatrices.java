@@ -19,7 +19,14 @@ public class CaJavaMatrices {
         
         
         m1.readLEq();
+        m1.findA();
         m1.find2x2Determinant();
+        m1.findA();
+        m1.findX();
+        m1.findB();
+        m1.findInverseA();
+        
+        
         
     }
     
