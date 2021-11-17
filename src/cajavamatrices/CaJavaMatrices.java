@@ -14,7 +14,13 @@ public class CaJavaMatrices {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Matrix2by2 m1 = new Matrix2by2();
+        
+        
+        
+        m1.readLEq();
+        m1.find2x2Determinant();
+        
     }
     
 }
