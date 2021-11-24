@@ -48,11 +48,12 @@ public class CaJavaMatrices {
                 Matrix3x3 m2 =new Matrix3x3();
                 m2.readLEq();
                 m2.find3x3Determinant();
-//                m2.findA();
-//                m2.findX();
-//                m2.findB();
+                m2.findA();
+                m2.findX();
+                m2.findB();
                 m2.coFactors();
                 m2.transposeA();
+                m2.readFinalResult();
  
 
                 

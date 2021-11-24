@@ -17,6 +17,6 @@ public interface Matrix3x3Interface {
     public abstract void findB();
     public abstract void coFactors();
     public abstract void transposeA();
-//    public abstract void readFinalResult();
+    public abstract void readFinalResult();
     
 }

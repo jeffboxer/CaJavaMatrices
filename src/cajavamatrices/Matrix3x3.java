@@ -16,8 +16,10 @@ public class Matrix3x3 implements Matrix3x3Interface{
     private String[] coefS= {"","","","","","","","",""};
     private String[] var ={"x","y","z"} ;
     private int det ;
-    private float det1;
-         
+    private float det1 ;
+    private float x;
+    private float y;
+    private float z;
     
    
 
@@ -25,6 +27,33 @@ public class Matrix3x3 implements Matrix3x3Interface{
 
         m3.Menu2();
     }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    public float getZ() {
+        return z;
+    }
+
+    public void setZ(float z) {
+        this.z = z;
+    }
+    
+    
+    
 
     public Menu2 getM3() {
         return m3;
@@ -74,6 +103,8 @@ public class Matrix3x3 implements Matrix3x3Interface{
         this.det1 = det1;
     }
     
+    
+
     
 
     @Override
@@ -234,7 +265,7 @@ public class Matrix3x3 implements Matrix3x3Interface{
     @Override
     public void coFactors() {
         System.out.println("======================== CoFactors of A ======================================");
-        System.out.println("Representation");
+        System.out.println("Representation:");
         System.out.print(" + | "+"e f"+" |");
         System.out.print(" - | "+"d f"+" |");
         System.out.print(" + | "+"d e"+" |   = ");
@@ -372,7 +403,7 @@ public class Matrix3x3 implements Matrix3x3Interface{
 
     @Override
     public void transposeA() {
-        System.out.println("=================== Tranposing CoFactors of A =============================");
+        System.out.println("\n=================== Tranposing CoFactors of A =============================\n");
         
         System.out.print("                | "+ this.getCoFactors()[0]+" "+this.getCoFactors()[1]+" "+this.getCoFactors()[2]+"   |");
         System.out.println("                                | "+ this.getCoFactors()[0]+" "+this.getCoFactors()[3]+" "+this.getCoFactors()[6]+"   |");
@@ -384,6 +415,42 @@ public class Matrix3x3 implements Matrix3x3Interface{
         System.out.println("                                   | "+ this.getCoFactors()[2]+" "+this.getCoFactors()[5]+" "+this.getCoFactors()[8]+"   |");
         
        
+    }
+
+    @Override
+    public void readFinalResult() {
+        System.out.println("");
+        System.out.println("===================================== Final Result ======================================================");
+        System.out.println("");
+        System.out.println("Formula : 1/det|A| *( Transpose Cofactor(A)  * B)\n");
+        System.out.print("        |"+this.getCoFactors()[0]+" "+this.getCoFactors()[3]+" "+this.getCoFactors()[6]+" |");
+                System.out.println("    | "+m3.geteTot()[0]+ " |");
+        System.out.print("1/"+this.getDet()+" * ");
+        System.out.print(" |"+this.getCoFactors()[1]+" "+this.getCoFactors()[4]+" "+this.getCoFactors()[7]+" |  *");
+        System.out.println("  | "+m3.geteTot()[1]+ " |");
+
+        System.out.print("        |"+this.getCoFactors()[2]+" "+this.getCoFactors()[5]+" "+this.getCoFactors()[8]+" |");
+        System.out.println("     | "+m3.geteTot()[2]+ " |\n");
+        
+        
+        System.out.print("1/"+this.getDet()+" * ");
+        System.out.println("|"+(this.getCoFactors()[0]*m3.geteTot()[0])+" + ("+(this.getCoFactors()[3]*m3.geteTot()[1])+") + ("+(this.getCoFactors()[6]*m3.geteTot()[2])+") |");
+        System.out.println("       |"+(this.getCoFactors()[1]*m3.geteTot()[0])+" + ("+(this.getCoFactors()[4]*m3.geteTot()[1])+") + ("+(this.getCoFactors()[7]*m3.geteTot()[2])+") |");
+        System.out.println("       |"+(this.getCoFactors()[2]*m3.geteTot()[0])+" + ("+(this.getCoFactors()[5]*m3.geteTot()[1])+") + ("+(this.getCoFactors()[8]*m3.geteTot()[2])+") |");
+        
+        
+        System.out.print("\n1/"+this.getDet()+" * ");
+        this.setX((this.getCoFactors()[0]*m3.geteTot()[0])+(this.getCoFactors()[3]*m3.geteTot()[1])+(this.getCoFactors()[6]*m3.geteTot()[2]));
+        this.setY(((this.getCoFactors()[1]*m3.geteTot()[0])+(this.getCoFactors()[4]*m3.geteTot()[1])+(this.getCoFactors()[7]*m3.geteTot()[2])));
+        this.setZ(((this.getCoFactors()[2]*m3.geteTot()[0])+(this.getCoFactors()[5]*m3.geteTot()[1])+(this.getCoFactors()[8]*m3.geteTot()[2])));
+        
+        this.setDet1(((1f)/(this.getDet())));
+        System.out.print("|"+this.getX()+" |");
+        System.out.println("        X = | "+((this.getDet1())*(this.getX()))+"   |");
+        System.out.print("       |"+(this.getY())+" |   = ");
+        System.out.println("  Y = | "+((this.getDet1())*(this.getY()))+"   |");
+        System.out.print("       |"+this.getZ()+" |");
+        System.out.println("        Z = | "+((this.getDet1())*(this.getZ()))+"   |");
     }
 
 }
