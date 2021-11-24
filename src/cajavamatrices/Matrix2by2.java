@@ -16,11 +16,10 @@ public class Matrix2by2 implements Matrix2by2Interface {
     //Attributes
 
     private String[] coefS= {"","","",""};
-    private int[] tot = {+2,3};
     private String[] var ={"x","y"} ;
     private int det ;
     private float det1;
-    private int fresult[] ={0,0};
+
     
     //Constructor
 
@@ -52,13 +51,6 @@ public class Matrix2by2 implements Matrix2by2Interface {
         this.var = var;
     }
 
-    public int[] getTot() {
-        return tot;
-    }
-
-    public void setTot(int[] tot) {
-        this.tot = tot;
-    }
 
     public int getDet() {
         return det;
@@ -68,13 +60,6 @@ public class Matrix2by2 implements Matrix2by2Interface {
         this.det = det;
     }
 
-    public int[] getFresult() {
-        return fresult;
-    }
-
-    public void setFresult(int[] fresult) {
-        this.fresult = fresult;
-    }
     
     
     

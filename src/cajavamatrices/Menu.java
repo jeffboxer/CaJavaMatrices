@@ -39,8 +39,9 @@ public class Menu {
     public void Menu(){
     
         System.out.println("Please type your first equation : ");
-        var =r.next();
-        var =var.toLowerCase();
+        //var =r.next();
+        var = "2x+3y=4";
+        //var =var+r.toLowerCase();
         
         var=var.replaceAll("x",",");
         var=var.replaceAll("y",",");
@@ -56,8 +57,9 @@ public class Menu {
 
         
         System.out.println("Please type your second equation : ");
-        var =r.next();
-        var =var.toLowerCase();
+      //var =r.next();
+        var = "3x+4y=5";
+        //var =var+r.toLowerCase();
         
         var=var.replaceAll("x",",");
         var=var.replaceAll("y",",");
