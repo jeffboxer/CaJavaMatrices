@@ -21,29 +21,28 @@ public class DataBase {
         try {
 
             User u_user = null;
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                String dbServer = "jdbc:mysql://localhost:3306/ca_database";
-                String user = "root";
-                String password = "Adorominas22"; // Change this later
-                String query = "SELECT * FROM user WHERE user_id= ?";
 
-                Connection conn = DriverManager.getConnection(dbServer, user, password) ;
-                PreparedStatement stmt = conn.prepareStatement(query) ;
-                
-                stmt.setString(1, String.valueOf(id));
-                ResultSet rs = stmt.executeQuery();
-                rs.next();
-                
+            String driver = "com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/ca_database";
+            String username = "root";
+            String password = "Adorominas22";
+            Class.forName(driver);
+            String query = "SELECT * FROM user WHERE user_id= ?";
 
-                
-                    u_user = new User(Integer.parseInt(rs.getString("user_id")),
-                    rs.getString("name"),rs.getString("surname"),Integer.parseInt(rs.getString("age")),rs.getString("username"),
+            Connection conn = DriverManager.getConnection(url, username, password);
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setString(1, String.valueOf(id));
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+
+            u_user = new User(Integer.parseInt(rs.getString("user_id")),
+                    rs.getString("name"), rs.getString("surname"), Integer.parseInt(rs.getString("age")), rs.getString("username"),
                     rs.getString("password"));
-                
-                
-                stmt.close() ;
-                conn.close() ;
-                return u_user;
+
+            stmt.close();
+            conn.close();
+            return u_user;
 
         } catch (Exception e) {
             System.out.println(e);
@@ -51,5 +50,4 @@ public class DataBase {
         }
     }
 
-}
 }
