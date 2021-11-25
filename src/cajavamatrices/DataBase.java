@@ -22,9 +22,9 @@ public class DataBase {
 
             User u_user = null;
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                String dbServer = "jdbc:mysql://localhost:3306/equationsolver";
+                String dbServer = "jdbc:mysql://localhost:3306/ca_database";
                 String user = "root";
-                String password = "boleiro16"; // Change this later
+                String password = "Adorominas22"; // Change this later
                 String query = "SELECT * FROM user WHERE user_id= ?";
 
                 Connection conn = DriverManager.getConnection(dbServer, user, password) ;
