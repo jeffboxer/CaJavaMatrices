@@ -38,7 +38,7 @@ public class DataBase {
 
             u_user = new User(Integer.parseInt(rs.getString("user_id")),
                     rs.getString("name"), rs.getString("surname"), Integer.parseInt(rs.getString("age")), rs.getString("username"),
-                    rs.getString("password"));
+                    rs.getString("password"));//need to be changed
 
             stmt.close();
             conn.close();
