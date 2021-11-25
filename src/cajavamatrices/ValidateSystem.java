@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class ValidateSystem {
     Scanner myKb = new Scanner(System.in);
+    UsersList service = new UsersList();
     
     Admin admin = new Admin();
     
@@ -37,6 +38,20 @@ public class ValidateSystem {
         }
     }
     
+    
+    public void loginMenu(){
+        
+        System.out.println("Please enter your username");
+        String username = myKb.nextLine();
+        
+        
+        
+    }
+    
+    public void signupMenu(){
+        
+        
+    }
     
     
     

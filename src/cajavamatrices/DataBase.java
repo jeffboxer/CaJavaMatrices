@@ -5,10 +5,47 @@
  */
 package cajavamatrices;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author user
  */
-class DataBase {
+public class DataBase {
     
+    public static Connection getConnection() throws Exception{
+            
+        
+        try {
+            
+            String driver = "com.mysql.jdbc.Driver";
+            String url ="jdbc:mysql://localhost:3306/friends";
+            String username = "root";
+            String password = "Adorominas22";
+            String query = "SELECT * FROM user WHERE user_id= ?";
+            Class.forName(driver);
+            
+            Connection conn = DriverManager.getConnection(url,username,password);
+            PreparedStatement stmt = conn.prepareStatement(query) ;
+            System.out.println("Connnected");
+            return conn;
+            
+                
+            
+        }catch (Exception e) {
+            System.out.println(e);
+    }
+        
+        
+        
+        
+        return null;
+    
+    
+    
+    
+    }
 }
