@@ -79,14 +79,6 @@ public class Matrix2by2 implements Matrix2by2Interface {
            eq1="+"+ eq1+String.valueOf(m.getEqS()[0]+this.getVar()[0])+" ";
            this.coefS[0]="+"+String.valueOf(m.getEqS()[0]);
         }
-         
-//        if (this.getCoef()[0]<0) {
-//            eq1 =" "+ eq1+String.valueOf(this.getCoef()[0])+this.getVar()[0]+" ";
-//            this.coefS[0]=String.valueOf(this.getCoef()[0]);
-//        } else {
-//           eq1="+"+ eq1+String.valueOf(this.getCoef()[0]+this.getVar()[0])+" ";
-//           this.coefS[0]="+"+String.valueOf(this.getCoef()[0]);
-//        }
 
             if (m.getEqS()[1]<0) {
             eq1 =eq1+String.valueOf(m.getEqS()[1])+this.getVar()[1]+" ";
@@ -96,15 +88,7 @@ public class Matrix2by2 implements Matrix2by2Interface {
            this.coefS[1]="+"+String.valueOf(m.getEqS()[1]);
         }
 
-        
-//        if (this.getCoef()[1]<0) {
-//            eq1 =" "+ eq1+String.valueOf(this.coef[1])+this.getVar()[1];
-//            this.coefS[1]=String.valueOf(this.coef[1]);
-//        } else {
-//           eq1 = " "+ eq1+"+"+String.valueOf(this.coef[1])+this.getVar()[1];
-//           this.coefS[1]=String.valueOf(this.coef[1]);
-//        }
-//        
+     
         System.out.println(eq1+" = "+m.geteTot()[0]);
         
         if (m.getEqS()[2]<0) {
@@ -115,13 +99,6 @@ public class Matrix2by2 implements Matrix2by2Interface {
            this.coefS[2]="+"+String.valueOf(m.getEqS()[2]);
         }
         
-//        if (this.getCoef()[2]<0) {
-//            eq2 = eq2+" "+String.valueOf(this.coef[2])+this.getVar()[0];
-//            this.coefS[2]=String.valueOf(this.coef[2]);
-//        } else {
-//           eq2 = eq2+" "+"+"+String.valueOf(this.coef[2])+this.getVar()[0];
-//           this.coefS[2]=String.valueOf(this.coef[2]);
-//        }
 
 
       if (m.getEqS()[3]<0) {
@@ -132,14 +109,7 @@ public class Matrix2by2 implements Matrix2by2Interface {
            this.coefS[3]="+"+String.valueOf(m.getEqS()[3]);
         }
         
-//        if (this.getCoef()[3]<0) {
-//            eq2 =eq2+String.valueOf(this.coef[3])+this.getVar()[1];
-//            this.coefS[3]=String.valueOf(this.coef[3]);
-//        } else {
-//           eq2 =eq2+" "+"+"+String.valueOf(this.coef[3])+this.getVar()[1];
-//           this.coefS[3]=String.valueOf(this.coef[3]);
-//        }
-//        
+
         System.out.println(eq2+" = "+m.geteTot()[1]);
         
         System.out.println("===============================================================");

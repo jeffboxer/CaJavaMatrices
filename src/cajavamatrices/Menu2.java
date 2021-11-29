@@ -16,7 +16,7 @@ public class Menu2 {
     private Scanner r = new Scanner(System.in);
     private int eqS[]={0,0,0,0,0,0,0,0,0};
     private int eTot[]={0,0,0};
-    private String var;
+    private String var,var1,var2;
 
     public int[] getEqS() {
         return eqS;
@@ -39,13 +39,13 @@ public class Menu2 {
     public void Menu2(){
     
         System.out.println("Please type your first equation ( example : -1x+3y-10z=15) : ");
-         var ="1x+1y+1z=2";
-        var =var.toLowerCase();
+         var1 ="1x+1y+1z=2";
+        var1 =var1.toLowerCase();
         
-        var=var.replaceAll("x",",");
-        var=var.replaceAll("y",",");
-        var=var.replaceAll("z",",");
-        var=var.replaceAll("=",",");
+        var=var1.replaceAll("x",",");
+        var=var1.replaceAll("y",",");
+        var=var1.replaceAll("z",",");
+        var=var1.replaceAll("=",",");
         
 
 
