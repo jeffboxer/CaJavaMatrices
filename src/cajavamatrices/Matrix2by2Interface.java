@@ -10,6 +10,7 @@ package cajavamatrices;
  */
 public interface Matrix2by2Interface {
     
+    public abstract void storeEquationsTyped();
     public abstract void readLEq();
     public abstract void find2x2Determinant();
     public abstract void findA();

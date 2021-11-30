@@ -16,7 +16,7 @@ public class Menu2 {
     private Scanner r = new Scanner(System.in);
     private int eqS[]={0,0,0,0,0,0,0,0,0};
     private int eTot[]={0,0,0};
-    private String var,var1,var2;
+    private String var,var1,var2,var3;
 
     public int[] getEqS() {
         return eqS;
@@ -33,6 +33,20 @@ public class Menu2 {
     public void seteTot(int[] eTot) {
         this.eTot = eTot;
     }
+
+    public String getVar1() {
+        return var1;
+    }
+
+    public String getVar2() {
+        return var2;
+    }
+
+    public String getVar3() {
+        return var3;
+    }
+    
+    
     
     
     
@@ -40,12 +54,12 @@ public class Menu2 {
     
         System.out.println("Please type your first equation ( example : -1x+3y-10z=15) : ");
          var1 ="1x+1y+1z=2";
-        var1 =var1.toLowerCase();
-        
-        var=var1.replaceAll("x",",");
-        var=var1.replaceAll("y",",");
-        var=var1.replaceAll("z",",");
-        var=var1.replaceAll("=",",");
+         var1.toLowerCase();
+        var = var1;
+        var=var.replaceAll("x",",");
+        var=var.replaceAll("y",",");
+        var=var.replaceAll("z",",");
+        var=var.replaceAll("=",",");
         
 
 
@@ -54,6 +68,8 @@ public class Menu2 {
         this.eqS[1]=Integer.parseInt(e[1]);
         this.eqS[2]=Integer.parseInt(e[2]);
         this.eTot[0]=Integer.parseInt(e[4]);
+        
+
 
         
        
@@ -61,9 +77,9 @@ public class Menu2 {
 
         
         System.out.println("Please type your second equation ( example : -1x+3y-10z=15) : ");
-        var ="2x+3y+5z=11";
-        var =var.toLowerCase();
-        
+        var2 ="2x+3y+5z=11";
+        var2.toLowerCase();
+        var = var2;
         var=var.replaceAll("x",",");
         var=var.replaceAll("y",",");
         var=var.replaceAll("z",",");
@@ -76,12 +92,12 @@ public class Menu2 {
         this.eqS[5]=Integer.parseInt(f[2]);
         this.eTot[1]=Integer.parseInt(f[4]);
 
-
+        
         
          System.out.println("Please type your third equation ( example : -1x+3y-10z=15) : ");
-        var = "1x-5y+6z=29";
-        var =var.toLowerCase();
-        
+        var3 = "1x-5y+6z=29";
+        var3.toLowerCase();
+        var = var3;
         var=var.replaceAll("x",",");
         var=var.replaceAll("y",",");
         var=var.replaceAll("z",",");
@@ -94,7 +110,7 @@ public class Menu2 {
         this.eqS[8]=Integer.parseInt(g[2]);
         this.eTot[2]=Integer.parseInt(g[4]);
 
-
+     
 
     
     

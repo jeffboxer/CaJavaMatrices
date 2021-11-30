@@ -19,6 +19,8 @@ public class Matrix2by2 implements Matrix2by2Interface {
     private String[] var ={"x","y"} ;
     private int det ;
     private float det1;
+    private String eq1,eq2;
+    private float x_res,y_res;
 
     
     //Constructor
@@ -59,6 +61,40 @@ public class Matrix2by2 implements Matrix2by2Interface {
     public void setDet(int det) {
         this.det = det;
     }
+
+    public String getEq1() {
+        return eq1;
+    }
+
+    public void setEq1(String eq1) {
+        this.eq1 = eq1;
+    }
+
+    public String getEq2() {
+        return eq2;
+    }
+
+    public void setEq2(String eq2) {
+        this.eq2 = eq2;
+    }
+
+    public float getX_res() {
+        return x_res;
+    }
+
+    public void setX_res(float x_res) {
+        this.x_res = x_res;
+    }
+
+    public float getY_res() {
+        return y_res;
+    }
+
+    public void setY_res(float y_res) {
+        this.y_res = y_res;
+    }
+
+
 
     
     
@@ -124,8 +160,8 @@ public class Matrix2by2 implements Matrix2by2Interface {
         System.out.println("a.d - c.b");
         System.out.println("================================================");
         System.out.println("Determinant A");
-        System.out.println(m.getEqS()[0]+" * "+m.getEqS()[3] + " -( "+m.getEqS()[1]+" * "+m.getEqS()[2]+")");
-        System.out.println(m.getEqS()[0]*m.getEqS()[3]+"- ("+m.getEqS()[1]*m.getEqS()[2]+")");
+        System.out.println("det|A|= "+m.getEqS()[0]+" * "+m.getEqS()[3] + " -( "+m.getEqS()[1]+" * "+m.getEqS()[2]+")");
+        System.out.println("det|A|= "+m.getEqS()[0]*m.getEqS()[3]+"- ("+m.getEqS()[1]*m.getEqS()[2]+")");
         System.out.print("det|A|= ");
         System.out.println(m.getEqS()[0]*m.getEqS()[3]+(m.getEqS()[1]*m.getEqS()[2])*-1);
         this.setDet(m.getEqS()[0]*m.getEqS()[3]+(m.getEqS()[1]*m.getEqS()[2])*-1);
@@ -216,13 +252,23 @@ public class Matrix2by2 implements Matrix2by2Interface {
         System.out.println("| "+(Integer.parseInt(this.getCoefS()[2])*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[0])*m.geteTot()[1])+"  |" );
         System.out.println("------------------------------------------------------------------");
         System.out.print("X = | "+(m.getEqS()[3]*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[1])*m.geteTot()[1])+" |" );
-        System.out.print("   1 /"+this.getDet());
+        System.out.print("     1 /"+this.getDet());
         this.det1 = 1.00f/this.getDet();
-        System.out.println("   |"+(this.det1*(m.getEqS()[3]*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[1])*m.geteTot()[1]))+" |");
+        System.out.println("   X |"+(this.det1*(m.getEqS()[3]*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[1])*m.geteTot()[1]))+" |");
         System.out.print("    | "+(Integer.parseInt(this.getCoefS()[2])*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[0])*m.geteTot()[1])+"  |" );
         System.out.print(" . ");
         System.out.print("      = "); 
-        System.out.println("|"+(this.det1*(Integer.parseInt(this.getCoefS()[2])*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[0])*m.geteTot()[1]))+" |");
+        System.out.println("Y |"+(this.det1*(Integer.parseInt(this.getCoefS()[2])*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[0])*m.geteTot()[1]))+" |");
+        this.setX_res((this.det1*(m.getEqS()[3]*m.geteTot()[0]+Integer.parseInt(this.getCoefS()[1])*m.geteTot()[1])));
+        this.setX_res((this.det1*((Integer.parseInt(this.getCoefS()[2])*(m.geteTot()[0])+(Integer.parseInt(this.getCoefS()[0])*m.geteTot()[1])))));
+    }
+
+    @Override
+    public void storeEquationsTyped() {
+        
+        this.setEq1(m.getVar1());
+        this.setEq2(m.getVar2());
+
     }
 
     

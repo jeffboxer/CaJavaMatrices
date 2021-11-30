@@ -10,6 +10,7 @@ package cajavamatrices;
  */
 public interface Matrix3x3Interface {
     
+    public abstract void storeEquationsTyped();
     public abstract void readLEq();
     public abstract void find3x3Determinant();
     public abstract void findA();

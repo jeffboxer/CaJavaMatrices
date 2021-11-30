@@ -15,11 +15,12 @@ public class Matrix3x3 implements Matrix3x3Interface{
     private int[] coFactors = {0,0,0,0,0,0,0,0,0};
     private String[] coefS= {"","","","","","","","",""};
     private String[] var ={"x","y","z"} ;
+    private String eq1,eq2,eq3;
     private int det ;
     private float det1 ;
-    private float x;
-    private float y;
-    private float z;
+    private float x,y,z;
+    private float x_res,y_res,z_res;
+
     
    
 
@@ -102,6 +103,55 @@ public class Matrix3x3 implements Matrix3x3Interface{
     public void setDet1(float det1) {
         this.det1 = det1;
     }
+
+    public float getX_res() {
+        return x_res;
+    }
+
+    public void setX_res(float x_res) {
+        this.x_res = x_res;
+    }
+
+    public float getY_res() {
+        return y_res;
+    }
+
+    public void setY_res(float y_res) {
+        this.y_res = y_res;
+    }
+
+    public float getZ_res() {
+        return z_res;
+    }
+
+    public void setZ_res(float z_res) {
+        this.z_res = z_res;
+    }
+
+    public String getEq1() {
+        return eq1;
+    }
+
+    public void setEq1(String eq1) {
+        this.eq1 = eq1;
+    }
+
+    public String getEq2() {
+        return eq2;
+    }
+
+    public void setEq2(String eq2) {
+        this.eq2 = eq2;
+    }
+
+    public String getEq3() {
+        return eq3;
+    }
+
+    public void setEq3(String eq3) {
+        this.eq3 = eq3;
+    }
+    
     
     
 
@@ -446,11 +496,24 @@ public class Matrix3x3 implements Matrix3x3Interface{
         
         this.setDet1(((1f)/(this.getDet())));
         System.out.print("|"+this.getX()+" |");
-        System.out.println("        X = | "+((this.getDet1())*(this.getX()))+"   |");
+        System.out.println("        X = | "+(((this.getDet1())*(this.getX())))+"   |");
         System.out.print("       |"+(this.getY())+" |   = ");
         System.out.println("  Y = | "+((this.getDet1())*(this.getY()))+"   |");
         System.out.print("       |"+this.getZ()+" |");
         System.out.println("        Z = | "+((this.getDet1())*(this.getZ()))+"   |");
+        this.setX_res(((this.getDet1())*(this.getX())));
+        this.setY_res(((this.getDet1())*(this.getY())));
+        this.setZ_res(((this.getDet1())*(this.getZ())));
+        
     }
+
+    @Override
+    public void storeEquationsTyped() {
+        this.setEq1(m3.getVar1());
+        this.setEq2(m3.getVar2());
+        this.setEq3(m3.getVar3());
+    }
+    
+    
 
 }

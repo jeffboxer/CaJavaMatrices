@@ -16,7 +16,7 @@ public class Menu {
     private Scanner r = new Scanner(System.in);
     private int eqS[]={0,0,0,0};
     private int eTot[]={0,0};
-    private String var;
+    private String var,var1,var2;
 
     public int[] getEqS() {
         return eqS;
@@ -33,6 +33,23 @@ public class Menu {
     public void seteTot(int[] eTot) {
         this.eTot = eTot;
     }
+
+    public String getVar1() {
+        return var1;
+    }
+
+    public void setVar1(String var1) {
+        this.var1 = var1;
+    }
+
+    public String getVar2() {
+        return var2;
+    }
+
+    public void setVar2(String var2) {
+        this.var2 = var2;
+    }
+    
     
     
     
@@ -40,9 +57,10 @@ public class Menu {
     
         System.out.println("Please type your first equation : ");
         //var =r.next();
-        var = "2x+3y=4";
+        var1 = "2x+3y=4";
+        var1.toLowerCase();
         //var =var+r.toLowerCase();
-        
+        var=var1;
         var=var.replaceAll("x",",");
         var=var.replaceAll("y",",");
         var=var.replaceAll("=",",");
@@ -58,9 +76,10 @@ public class Menu {
         
         System.out.println("Please type your second equation : ");
       //var =r.next();
-        var = "3x+4y=5";
+        var2 = "3x+4y=5";
+        var2.toLowerCase();
         //var =var+r.toLowerCase();
-        
+        var=var2;
         var=var.replaceAll("x",",");
         var=var.replaceAll("y",",");
         var=var.replaceAll("=",",");
