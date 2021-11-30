@@ -89,7 +89,7 @@ public class DbInteraction {
             String driver = "com.mysql.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/ca_database";
             String username = "root";
-            String password = "Adorominas22";
+            String password = "root";
             Class.forName(driver);
 
             Connection conn = DriverManager.getConnection(url, username, password);
