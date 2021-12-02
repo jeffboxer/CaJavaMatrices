@@ -23,8 +23,8 @@ public class CaJavaMatrices {
 
         DbInteraction db = new DbInteraction();
 
-        db.getLog();
-
+        db.signInOut();
+           
                 
         
 

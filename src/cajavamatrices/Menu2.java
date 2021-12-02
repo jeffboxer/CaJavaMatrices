@@ -53,7 +53,7 @@ public class Menu2 {
     public void Menu2(){
     
         System.out.println("Please type your first equation ( example : -1x+3y-10z=15) : ");
-         var1 ="1x+1y+1z=2";
+         var1 ="3x+2y-1z=6";
          var1.toLowerCase();
         var = var1;
         var=var.replaceAll("x",",");
@@ -77,7 +77,7 @@ public class Menu2 {
 
         
         System.out.println("Please type your second equation ( example : -1x+3y-10z=15) : ");
-        var2 ="2x+3y+5z=11";
+        var2 ="-2x+2y+1z=3";
         var2.toLowerCase();
         var = var2;
         var=var.replaceAll("x",",");
@@ -95,7 +95,7 @@ public class Menu2 {
         
         
          System.out.println("Please type your third equation ( example : -1x+3y-10z=15) : ");
-        var3 = "1x-5y+6z=29";
+        var3 = "+1x+1y+1z=4";
         var3.toLowerCase();
         var = var3;
         var=var.replaceAll("x",",");
