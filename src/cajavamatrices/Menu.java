@@ -56,8 +56,8 @@ public class Menu {
     public void Menu(){
     
         System.out.println("Please type your first equation : ");
-        //var =r.next();
-        var1 = "2x+3y=4";
+        var1 =r.next();
+        //var1 = "2x+3y=4";
         var1.toLowerCase();
         //var =var+r.toLowerCase();
         var=var1;
@@ -75,8 +75,8 @@ public class Menu {
 
         
         System.out.println("Please type your second equation : ");
-      //var =r.next();
-        var2 = "3x+4y=5";
+        var2 =r.next();
+        //var2 = "3x+4y=5";
         var2.toLowerCase();
         //var =var+r.toLowerCase();
         var=var2;
