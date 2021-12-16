@@ -694,6 +694,7 @@ public class DbInteraction {
                     this.setX(m1.getX_res());
                     this.setY(m1.getY_res());
                     eq2ToDb();
+                    
 
                     if (this.getType() == 1) {
                         goBackAdmin();
