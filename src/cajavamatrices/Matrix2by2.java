@@ -267,16 +267,21 @@ public class Matrix2by2 implements Matrix2by2Interface {
         System.out.println("------------------------------------------------------------------");
         System.out.print("X = | " + (m.getEqS()[3] * m.geteTot()[0] + Integer.parseInt(this.getCoefS()[1]) * m.geteTot()[1]) + " |");
         System.out.print("     1 /" + this.getDet());
+        
+        // 1/det|A|
         this.det1 = 1.00f / this.getDet();
+        
         System.out.println("   X |" + (this.det1 * (m.getEqS()[3] * m.geteTot()[0] + Integer.parseInt(this.getCoefS()[1]) * m.geteTot()[1])) + " |");
         System.out.print("    | " + (Integer.parseInt(this.getCoefS()[2]) * m.geteTot()[0] + Integer.parseInt(this.getCoefS()[0]) * m.geteTot()[1]) + "  |");
         System.out.print(" . ");
         System.out.print("      = ");
-        System.out.println("Y |" + (this.det1 * (Integer.parseInt(this.getCoefS()[2]) * m.geteTot()[0] + Integer.parseInt(this.getCoefS()[0]) * m.geteTot()[1])) + " |");
+        System.out.println("   Y |" + (this.det1 * (Integer.parseInt(this.getCoefS()[2]) * m.geteTot()[0] + Integer.parseInt(this.getCoefS()[0]) * m.geteTot()[1])) + " |");
+        
+        //Setting my final values of X and Y into my attributes:
         this.setX_res((this.det1 * (m.getEqS()[3] * m.geteTot()[0] + Integer.parseInt(this.getCoefS()[1]) * m.geteTot()[1])));
-        this.setX_res((this.det1 * ((Integer.parseInt(this.getCoefS()[2]) * (m.geteTot()[0]) + (Integer.parseInt(this.getCoefS()[0]) * m.geteTot()[1])))));
+        this.setY_res((this.det1 * ((Integer.parseInt(this.getCoefS()[2]) * (m.geteTot()[0]) + (Integer.parseInt(this.getCoefS()[0]) * m.geteTot()[1])))));
 
-//calling the following method:
+        //calling the following method:
         storeEquationsTyped();
 
     }

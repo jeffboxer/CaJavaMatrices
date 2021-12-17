@@ -23,6 +23,14 @@ public class DbInteraction {
     private int id, type, equations;
     private float det, x, y, z;
 
+    public DbInteraction() throws Exception {
+        
+        signInOut();
+        
+    }
+    
+    
+
     //Getters and Setters
     
     public String getName() {
@@ -680,13 +688,6 @@ public class DbInteraction {
                     Matrix2by2 m1 = new Matrix2by2();
 
                     m1.readLEq();
-                    m1.findA();
-                    m1.findX();
-                    m1.findB();
-                    m1.find2x2Determinant();
-                    m1.findInverseA();
-                    m1.readFinalResult();
-                    m1.storeEquationsTyped();
                     this.setEq1(m1.getEq1());
                     this.setEq2(m1.getEq2());
                     this.setEq3("N/A");
@@ -709,14 +710,6 @@ public class DbInteraction {
                     Matrix3x3 m2 = new Matrix3x3();
 
                     m2.readLEq();
-                    m2.find3x3Determinant();
-                    m2.findA();
-                    m2.findX();
-                    m2.findB();
-                    m2.coFactors();
-                    m2.transposeA();
-                    m2.readFinalResult();
-                    m2.storeEquationsTyped();
 
                     this.setEq1(m2.getEq1());
                     this.setEq2(m2.getEq2());

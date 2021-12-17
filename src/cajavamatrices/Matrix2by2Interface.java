@@ -12,7 +12,7 @@ public interface Matrix2by2Interface {
 
     /**
      * This method will only print out the equations typed by the user which can
-     * be used later as a reference in case he forget what he typed. This is my
+     * be used later as a reference in case he forgets what he typed. This is my
      * initial method and it will call the following method when finished.
      */
     public abstract void readLEq();
@@ -24,7 +24,7 @@ public interface Matrix2by2Interface {
     public abstract void find2x2Determinant();
 
     /**
-     * Method used only to pint out the Matrix A. That is one of the reasons why
+     * Method used only to prints out the Matrix A. That is one of the reasons why
      * we have created an array to store numbers as Strings. Wanted to keep
      * positive and negative signs.
      */
@@ -42,7 +42,7 @@ public interface Matrix2by2Interface {
     public abstract void findX();
 
     /**
-     * Method used only to pint out the Matrix B. Matrix B is composed by the
+     * Method used only to prints out the Matrix B. Matrix B is composed by the
      * constants (numbers after "="). That is one of the reasons why we have
      * created an array to store numbers as Strings. Wanted to keep positive and
      * negative signs.
