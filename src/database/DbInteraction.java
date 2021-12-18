@@ -17,22 +17,20 @@ import java.util.Scanner;
  * @author Jefferson
  */
 public class DbInteraction {
-    
+
     //Attributes 
     private String name, lastname, username, password, eq1, eq2, eq3;
     private int id, type, equations;
     private float det, x, y, z;
 
+    //Constructor
     public DbInteraction() throws Exception {
-        
+        //This constructor will call the first method from this class and that method will call the others 
         signInOut();
-        
+
     }
-    
-    
 
     //Getters and Setters
-    
     public String getName() {
         return name;
     }
@@ -145,11 +143,12 @@ public class DbInteraction {
         this.eq3 = eq3;
     }
 
-    
     // Instantiating object Scanner and creating a new Scanner Object
     Scanner s = new Scanner(System.in);
 
-    // Connection between java and MySQL
+    /**
+     * Method used simply to get connection with my database.
+     */
     public Connection getConnection() throws Exception {
 
         try {
@@ -172,7 +171,9 @@ public class DbInteraction {
 
     }
 
-    // 
+    /**
+     * This is the first Menu in this program, it is where everything begins.
+     */
     public void signInOut() throws Exception {
 
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -184,13 +185,17 @@ public class DbInteraction {
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
 
         String sign = s.next();
+        //This condition is used to check if the option chosen by the user is valid and avoid the program to crash
         if (!sign.matches("[0-9]+")) {
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Not a valid option!");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
-            signInOut();
-        } else {
 
+            //If this program returns an Error message it restarts the moethod by calling it again.
+            signInOut();
+
+        } else {
+            // If the user choose one of the correction options, it will lea him to a different method dependind on his choice.
             switch (Integer.parseInt(sign)) {
                 case 1:
 
@@ -205,6 +210,7 @@ public class DbInteraction {
                     break;
 
                 default:
+
                     System.out.println("--------------------------------------------------------------------------------------------------------------------------");
                     System.out.println("Not a valid option!");
                     System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -214,9 +220,14 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This is the user creation. It has connection with our Database. This is
+     * where the user starts the registration.
+     */
     public void userCreation() throws Exception {
         try {
 
+            //New Name
             System.out.println("User Registration:");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Please type your name:");
@@ -225,6 +236,7 @@ public class DbInteraction {
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Would you like to confirm the name " + name + "? Type 1 if you want to continue and 0 if you want to cancel:");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+
             String cancel = s.next();
 
             if (!cancel.matches("[0-9]+")) {
@@ -232,14 +244,17 @@ public class DbInteraction {
                 System.out.println("Not a valid option!");
                 System.out.println("--------------------------------------------------------------------------------------------------------------------------");
                 signInOut();
-            } else {
 
+            } else {
+                //This switch is used all the way through registration with the same pattern.
+                //It gives the user the option to cancel the proccess and go back to the Main menu.
                 switch (Integer.parseInt(cancel)) {
                     case 0:
 
                         signInOut();
                         break;
                     case 1:
+                        //In case of confirmation it stores the users Name in an attribute and calls the next method.
                         this.setName(name);
                         newLastName();
                         break;
@@ -258,9 +273,15 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This the Last Name creation. It has connection with our Database. For
+     * every option available during the registration, the program will ask the
+     * user if he wants to confirm the option previously typed by him or cancel
+     * it.
+     */
     public void newLastName() throws Exception {
         try {
-
+            //New Last Name ---- follows the same model as the method userCreation commented above.
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Please type your last name:");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -282,6 +303,7 @@ public class DbInteraction {
 
                         break;
                     case 1:
+                        //If confirmed set the last name and go to the next method.
                         this.setLastname(lastName);
                         newUserName();
                         break;
@@ -298,6 +320,13 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This the username creation. It has connection with our Database. For
+     * every option available during the registration, the program will ask the
+     * user if he wants to confirm the option previously typed by him or cancel
+     * it. If the username chosen already exist, it wont let the user choose it
+     * and will let him know.
+     */
     public void newUserName() throws Exception {
 
         try {
@@ -320,8 +349,11 @@ public class DbInteraction {
                         signInOut();
                         break;
                     case 1:
+                        //Sets the username in a attribute.
                         this.setUsername(username);
+                        //Calls this method to check if the username already exists in the Database.
                         alreadyAUser(username);
+                        //Calls the method Password to proceed with the registration case the username is new.
                         newPassword();
 
                         break;
@@ -337,6 +369,12 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This the password creation. It has connection with our Database. For
+     * every option available during the registration, the program will ask the
+     * user if he wants to confirm the option previously typed by him or cancel
+     * it.
+     */
     public void newPassword() throws Exception {
 
         try {
@@ -359,8 +397,17 @@ public class DbInteraction {
                         signInOut();
                         break;
                     case 1:
+                        //Stores the password chosen in an attribute.
                         this.setPassword(password);
+                        /*Sets the usertype : For every new user, the user type is set up as 2- Regular user. 
+                        Only Admins can make a Regular User become an Admin.
+                         */
                         this.setType(2);
+
+                        /*After the user confirms the last step of the registration. All the information stored will be sent to the database.
+                        this update has to be done at the very last step as we do not want to fill the database with any info in case user cancels
+                        the registration.
+                         */
                         insertIntoUser();
                         break;
                     default:
@@ -375,6 +422,11 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method uses the SQL command INSERT INTO to add new user`s
+     * information to our database. It has connection with our Database. This
+     * method depends on the other registration methods.
+     */
     public void insertIntoUser() throws Exception {
 
         try {
@@ -402,6 +454,10 @@ public class DbInteraction {
         }
     }
 
+    /**
+     * This is the Menu for the Admins. It has no connection with our Database.
+     * This menu has more options than the one that Regular Users can access.
+     */
     public void menuAdmin() throws Exception {
 
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -423,7 +479,7 @@ public class DbInteraction {
             menuAdmin();
         } else {
             switch (Integer.parseInt(option)) {
-
+                //This is a menu that will lead the Admin through the option chosen by calling other methods.
                 case 1:
                     allUsers();
 
@@ -449,6 +505,10 @@ public class DbInteraction {
         }
     }
 
+    /**
+     * This is the Menu for the Regular Users. It has no connection with our
+     * Database. This menu has limited access.
+     */
     public void menuUser() throws Exception {
 
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -467,6 +527,7 @@ public class DbInteraction {
         } else {
 
             switch (Integer.parseInt(option)) {
+                //This switch will guide the Regular User through the option chosen .
                 case 1:
                     modifyOwnUser(this.getUsername());
                     break;
@@ -487,6 +548,12 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method uses the SQL Query : SELECT to return information from the
+     * Database. It has connection with our Database. This method returns a list
+     * with all users in our DB. This method also act as a Menu giving you
+     * options to modify the user`s information.
+     */
     public void allUsers() throws Exception {
 
         try {
@@ -498,7 +565,7 @@ public class DbInteraction {
             System.out.println("ID| Name:");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             while (result.next()) {
-
+                // Only the user id (PK) and name are returned.
                 System.out.println(result.getString("user_id") + " | " + result.getString("user_name"));
 
             }
@@ -507,6 +574,7 @@ public class DbInteraction {
             select.close();
             result.close();
 
+            // Menu that leads to the user`s modification.
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Would you like to modify any user?");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -526,6 +594,9 @@ public class DbInteraction {
 
                 switch (Integer.parseInt(option)) {
                     case 1:
+                        /*After seeing a list with all users and their respective IDs,
+                        the admin has to type the ID related to the user he wants to change.
+                         */
                         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
                         System.out.println("Type the ID for the user you want to modify:");
                         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -576,6 +647,10 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method goes back to Admin`s Menu. It has no connection with the
+     * Database.
+     */
     public void goBackAdmin() throws Exception {
 
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -598,6 +673,7 @@ public class DbInteraction {
 
             switch (Integer.parseInt(option)) {
                 case 1:
+                    // Confirming if the Admin type is equals to 1.
                     if (this.getType() == 1) {
                         menuAdmin();
                     } else {
@@ -622,6 +698,10 @@ public class DbInteraction {
         }
     }
 
+    /**
+     * This method goes back to the User`s Menu. It has no connection with the
+     * Database.
+     */
     public void goBackUser() throws Exception {
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
         System.out.println("What Would you like to do next?");
@@ -662,6 +742,10 @@ public class DbInteraction {
         }
     }
 
+    /**
+     * This method is called whenever an user choose to solve equations.. It has
+     * no connection to the DB yet.
+     */
     public void solveEquations() throws Exception {
 
         System.out.println("------------------------------------------------------------------------------");
@@ -685,17 +769,22 @@ public class DbInteraction {
 
             switch (Integer.parseInt(option)) {
                 case 1:
+                    /*In case the user decides to solve 2 simultaneous equations:
+                    *An object of my Matrix 2x2 class is created.
+                     */
                     Matrix2by2 m1 = new Matrix2by2();
-
+                    //First method runs and it is responsible for calling other methods within the class.
                     m1.readLEq();
+                    //I set all the information I need to be sent to our Database and create a log.
                     this.setEq1(m1.getEq1());
                     this.setEq2(m1.getEq2());
+                    //In 2 simultaneous equations, there is not a third one therefore, it is set as "N/A".
                     this.setEq3("N/A");
                     this.setDet(m1.getDet());
                     this.setX(m1.getX_res());
                     this.setY(m1.getY_res());
+                    //Calls the comand that sends it to the DB.
                     eq2ToDb();
-                    
 
                     if (this.getType() == 1) {
                         goBackAdmin();
@@ -706,11 +795,13 @@ public class DbInteraction {
                     break;
 
                 case 2:
-
+                    /*In case the user decides to solve 3 simultaneous equations:
+                    *An object of my Matrix 3x3 class is created.
+                     */
                     Matrix3x3 m2 = new Matrix3x3();
-
+                    //First method runs and it is responsible for calling other methods within the class.
                     m2.readLEq();
-
+                    //I set all the information I need to be sent to our Database and create a log.
                     this.setEq1(m2.getEq1());
                     this.setEq2(m2.getEq2());
                     this.setEq3(m2.getEq3());
@@ -718,7 +809,7 @@ public class DbInteraction {
                     this.setX(m2.getX_res());
                     this.setY(m2.getY_res());
                     this.setZ(m2.getZ_res());
-
+                    //Calls the comand that sends it to the DB.
                     eq3ToDb();
 
                     if (this.getType() == 1) {
@@ -754,6 +845,12 @@ public class DbInteraction {
         }
     }
 
+    /**
+     * This method uses the SQL command INSERT INTO to add all the 2x2
+     * equation`s information to our database. It has connection with our
+     * Database. It also sends the username that was type when the user logged
+     * into our program.
+     */
     public void eq2ToDb() throws Exception {
 
         try {
@@ -776,6 +873,12 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method uses the SQL command INSERT INTO to add all the 3x3
+     * equation`s information to our database. It has connection with our
+     * Database. It also sends the username that was type when the user logged
+     * into our program.
+     */
     public void eq3ToDb() throws Exception {
 
         try {
@@ -802,6 +905,10 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method uses the SQL command SELECT to show a log of all simultaneous
+     * equations solved. It has connection with our Database.
+     */
     public void getLog() throws Exception {
 
         try {
@@ -812,10 +919,8 @@ public class DbInteraction {
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Equation`s Log");
 
-
             while (result.next()) {
-                
-                
+
                 System.out.println("--------------------------------------------------------------------------------------------------------------------------");
                 System.out.println("User:" + result.getString("username"));
                 System.out.println("First Equation Typed: " + result.getString("equation1"));
@@ -839,6 +944,10 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method uses the SQL command SELECT to validate if an user exits in
+     * our Database. It has connection with our Database.
+     */
     public void userValidator() throws Exception {
 
         try {
@@ -849,6 +958,7 @@ public class DbInteraction {
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Please type your username: ");
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
+            //First i asks the user to log in by typing his username and password.
             this.setUsername(s.next().toLowerCase());
             stmt.setString(1, this.getUsername());
 
@@ -857,12 +967,13 @@ public class DbInteraction {
             System.out.println("--------------------------------------------------------------------------------------------------------------------------");
             this.setPassword(s.next());
             stmt.setString(2, this.getPassword());
-
+            //Then I access my Database and try to find any data with the username and password typed previously.
             ResultSet result = stmt.executeQuery();
-
+            //If my research returns anything, it means that the username and password exist and match. 
             if (result.next()) {
                 System.out.println("--------------------------------------------------------------------------------------------------------------------------");
                 System.out.println("Username and Password matching!");
+                //When username and password match, we get the usr type (Admin or Regular user) and send then to their respective menu.
                 this.setType(Integer.parseInt(result.getString("user_type")));
                 switch (Integer.parseInt(result.getString("user_type"))) {
                     case 1:
@@ -892,6 +1003,11 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method uses the SQL command SELECT to validate if a username is
+     * already in our Database. It has connection with our Database. This method
+     * is used while creating a new user.
+     */
     public void alreadyAUser(String username) throws Exception {
         try {
 
@@ -901,6 +1017,7 @@ public class DbInteraction {
             ResultSet result = stmt.executeQuery();
 
             if (result.next()) {
+                //Case the user tries to create a new username that already exists , this message will be returned.
                 System.out.println("--------------------------------------------------------------------------------------------------------------------------");
                 System.out.println("Username already taken!");
                 System.out.println("--------------------------------------------------------------------------------------------------------------------------");
@@ -914,6 +1031,11 @@ public class DbInteraction {
 
     }
 
+    /**
+     * This method uses the SQL command SELECT to validate if a username is
+     * already in our Database. It has connection with our Database. This method
+     * is used while modifying a user.
+     */
     public void alreadyAUser2(String username) throws Exception {
         try {
 
@@ -1321,6 +1443,5 @@ public class DbInteraction {
         } catch (Exception e) {
         }
     }
-    
-   
+
 }

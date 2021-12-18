@@ -6,7 +6,6 @@ package cajavamatrices.start;
 
 
 
-import cajavamatrices.Menu2;
 import database.DbInteraction;
 
 

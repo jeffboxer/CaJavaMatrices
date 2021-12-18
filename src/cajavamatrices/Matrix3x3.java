@@ -289,7 +289,7 @@ public class Matrix3x3 implements Matrix3x3Interface {
 
         //Storing my determinant
         this.setDet((((m3.getEqS()[0] * m3.getEqS()[4] * m3.getEqS()[8]) + (m3.getEqS()[1] * m3.getEqS()[5] * m3.getEqS()[6]) + (m3.getEqS()[2] * m3.getEqS()[3] * m3.getEqS()[7])) - ((m3.getEqS()[2] * m3.getEqS()[4] * m3.getEqS()[6]) + (m3.getEqS()[0] * m3.getEqS()[5] * m3.getEqS()[7]) + (m3.getEqS()[1] * m3.getEqS()[3] * m3.getEqS()[8]))));
-        System.out.println("=================================================");
+
 
         //Calling the following methods:
         coFactors();
